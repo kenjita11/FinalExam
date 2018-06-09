@@ -78,13 +78,17 @@
                     <td>
                         @{
                             long? KiloByte = @item.Size / 1024;
-                            string NewSize = KiloByte + " KB";
+                            long? mega = KiloByte / 1024;
+                            string NewSize = mega + " MB";
                         }
                         @NewSize
                     </td>
                     <td>
-                      
-                        <a href="@Html.DisplayFor(modelItem => item.WebViewLink)">@Html.DisplayFor(modelItem => item.Name)</a>
+                        <iframe frameborder="0"
+                                width="400"
+                                height="200"
+                                src="@Html.DisplayFor(modelItem => item.WebViewLink)">
+                        </iframe>
                     </td>
                     <td>
                         @string.Format("{0: dd/MM/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.CreatedTime).ToString()))
